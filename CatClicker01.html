@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        var counterValues = new Array();
+        $(document).ready(function(){
+            $(".counter").click(function () {
+                var counterIndex = $(this).index(".counter");
+                if (typeof counterValues[counterIndex]==='undefined'){
+                    counterValues[counterIndex] = 0;
+                }
+                counterValues[counterIndex]=counterValues[counterIndex]+1;
+                $(".counter")[counterIndex].innerHTML = counterValues[counterIndex];
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>Cat clicker 01</h1>
+<ul>
+    <div class="counter">0</div>
+    <div class="counter">0</div>
+</ul>
+<ul>
+    <div id="catImage"><img src="cat01.jpeg"></div>
+</ul>
+
+
+</body>
+</html>
