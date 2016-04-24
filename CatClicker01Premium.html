@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        var max = 2;
+        var currentCat = -1;
+        var counterValues = new Array();
+        var catName = ["Luisa", "Natasha"]
+        for (i = 0; i < max; i++) {
+            counterValues[i] = 0;
+        }
+
+        $(document).ready(function () {
+            alert("I am an alert box!");
+
+            var ul = document.getElementById("myList");
+            var image = document.getElementById("catImage");
+
+            for (i = 0; i < max; i++) {
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode("New item " + i));
+                //li.className = "myCat";
+                li.addEventListener('click', (function (catIndex) {
+                    return function () {
+
+                        var myName = document.getElementById("catName");
+
+
+                        myName.innerHTML = catName[catIndex];
+                        var imageId = catIndex + 1;
+                        var myImage = document.getElementById("catImage");
+                        myImage.src = "cat0" + imageId + ".jpg";
+                        currentCat = catIndex;
+                        updateCount();
+                    }
+                })(i));
+                ul.appendChild(li);
+            }
+
+        });
+
+        function incrementCatCount() {
+            var idCat = currentCat;
+            counterValues[idCat] = counterValues[idCat] + 1;
+            updateCount();
+        }
+
+        function updateCount() {
+            if (currentCat == -1) {
+                return;
+            }
+            var myCounts = document.getElementById("catCounter");
+            myCounts.innerHTML = "count = " + counterValues[currentCat];
+        }
+
+    </script>
+
+</head>
+<body>
+<h1>Cat clicker 01</h1>
+<button onclick="myFunction()">Try it</button>
+<ul id="myList">
+</ul>
+<div id="catName"></div>
+<div id="catCounter"></div>
+<img id="catImage" onclick="incrementCatCount()"/></body>
+
+
+</body>
+</html>
